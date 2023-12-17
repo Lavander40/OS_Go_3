@@ -28,4 +28,5 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/protobuf v1.26.0 // indirect
+	klaidliadon.dev/next v0.0.0-20190920153227-ed266f1ab94f // indirect
 )
